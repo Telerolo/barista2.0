@@ -1,7 +1,7 @@
 version: '3.8'
 
 services:
-  db:
+    db:
     image: postgres:15-alpine
     container_name: barista_db
     restart: always
@@ -11,6 +11,7 @@ services:
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
     volumes:
       - pgdata:/var/lib/postgresql/data
+      - ./backend/init.sql:/docker-entrypoint-initdb.d/init.sql
     networks:
       - barista-net
 
